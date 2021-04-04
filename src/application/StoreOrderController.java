@@ -7,10 +7,14 @@ import javafx.fxml.Initializable;
 
 public class StoreOrderController implements Initializable{
 
+	private MainScreenController mainController;
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		
 	}
 
+	public void setMainController(MainScreenController controller) {
+		mainController = controller;
+	} 
 }

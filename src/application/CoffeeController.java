@@ -7,9 +7,15 @@ import javafx.fxml.Initializable;
 
 public class CoffeeController implements Initializable {
 
+	private MainScreenController mainController;
+	
 	 @Override
-		public void initialize(URL arg0, ResourceBundle arg1) {
+	public void initialize(URL arg0, ResourceBundle arg1) {
 			// TODO Auto-generated method stub
 			
-		}
+	}
+	 
+	public void setMainController(MainScreenController controller) {
+		mainController = controller;
+	} 
 }
