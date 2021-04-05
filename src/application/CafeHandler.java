@@ -13,6 +13,8 @@ public class CafeHandler {
 	
     private Dounte donuteHandler = new Dounte();
     private CurrentOrder currentOrder = new CurrentOrder();
+    private Coffee coffeeHandler  = new Coffee();
+    private CoffeeType brewedCoffee = new CoffeeType();
     
 	CafeHandler(){
 		availableDounts.put(new CakeDonut().getDountName(), new CakeDonut());
@@ -39,15 +41,30 @@ public class CafeHandler {
 		return ret;
 	}
 	
-	public int getMaxDocuntCount() {
+	public int getMaxCount() {
 		return MAXDONUTCOUNT;
 	}
 	
-	public void addDounteToList(String dounteType, String flowerName, int count) {
-		DounteType dounte = availableDounts.get(dounteType);
+	public boolean addDounteToList(String dounteType, String flowerName, int count) {
+		DounteType dounte = null;
+		
+		if (dounteType.compareTo( new CakeDonut().getDountName()) == 0) {
+			dounte = new CakeDonut();
+		}
+		else if (dounteType.compareTo( new Donuthole().getDountName()) == 0) {
+			dounte = new Donuthole();
+		}
+		else if (dounteType.compareTo( new YeastDonut().getDountName()) == 0) {
+			dounte = new YeastDonut();
+		}
+		
+		if ( dounte == null) {
+			return false;
+		}
+		
 		dounte.setFlower(flowerName);
 		dounte.setNumberOfDounte(count);
-		donuteHandler.add(dounte);
+		return donuteHandler.add(dounte);
 	}
 	
 	public boolean removeDounteFromList(int index) {
@@ -75,5 +92,11 @@ public class CafeHandler {
 			donuteHandler = new Dounte();
 		}
 		return added;
+	}
+	
+	public ArrayList<String>  getTypesOfCoffeeSize() {
+		ArrayList<String> ret = new ArrayList<String>();
+		ret.addAll(availableSizeOfCoffee.keySet());
+		return ret;
 	}
 }

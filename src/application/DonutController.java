@@ -141,7 +141,7 @@ public class DonutController implements Initializable{
     	FlavorListData.addAll(handler.getDountsFlavor(new YeastDonut().getDountName()));
     	FlowersList.getSelectionModel().selectFirst();
     	
-    	for(int index = STARTCOUNT ; index <= handler.getMaxDocuntCount(); index++) {
+    	for(int index = STARTCOUNT ; index <= handler.getMaxCount(); index++) {
     		NumberOfCountComboBox.getItems().add(String.valueOf(index));
     	}
     	

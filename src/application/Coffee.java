@@ -8,14 +8,22 @@ public class Coffee extends MenuItem{
 	
 	@Override
 	public boolean add(Object obj) {
-		// TODO Auto-generated method stub
-		return false;
+		if(!(obj instanceof CoffeeType))
+        {
+            return false;
+        }
+		CoffeeType order = (CoffeeType) obj;
+        return coffeeList.add(order);
 	}
 
 	@Override
 	public boolean remove(Object obj) {
-		// TODO Auto-generated method stub
-		return false;
+		if(!(obj instanceof CoffeeType))
+        {
+            return false;
+        }
+		CoffeeType order = (CoffeeType) obj;
+        return coffeeList.remove(order);
 	}
 
 	@Override

@@ -32,7 +32,7 @@ public class DounteType {
 	public void setNumberOfDounte(int numberofDount) {
 		count = numberofDount;
 	}
-	public int getNumberOfDounte() {
-		return count;
+	public double getNumberOfDounte() {
+		return (double)count;
 	} 
 }

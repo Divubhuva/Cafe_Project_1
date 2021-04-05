@@ -34,8 +34,8 @@ public class CoffeeType {
 	public void setNumberOfCoffee( int numberofCoffee) {
 		count = numberofCoffee;
 	}
-	public int getNumberOfCoffee() {
-		return count;
+	public double getNumberOfCoffee() {
+		return (double)count;
 	}
 	
 	public String getSizeOfCoffee() {
