@@ -1,5 +1,6 @@
 package application;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -16,7 +17,13 @@ public class CafeHandler {
     private Coffee coffeeHandler  = new Coffee();
     private CoffeeType brewedCoffee = null;
     
-	CafeHandler(){
+    public String getTwoUpToTwoDecimalPoint(double val)
+    {
+        DecimalFormat df2 = new DecimalFormat("###,###,##0.00");
+        return df2.format(val);
+    }
+    
+    public  CafeHandler(){
 		availableDounts.put(new CakeDonut().getDountName(), new CakeDonut());
 		availableDounts.put(new YeastDonut().getDountName(), new YeastDonut());
 		availableDounts.put(new Donuthole().getDountName(), new Donuthole());
@@ -28,6 +35,8 @@ public class CafeHandler {
 		
 		
 	}
+	
+    
 	
 	public ArrayList<String>  getTypesOfDounts() {
 		ArrayList<String> ret = new ArrayList<String>();
@@ -72,11 +81,11 @@ public class CafeHandler {
 		return donuteHandler.remove(dounte);
 	}
 	
-	public double getTotalPriceForDonut() {
-		return donuteHandler.itemPrice();
+	public String getTotalPriceForDonut() {
+		return getTwoUpToTwoDecimalPoint(donuteHandler.itemPrice());
 	}
 	
-	public double getNumberOfOrderDonuts() {
+	public int getNumberOfOrderDonuts() {
 		return donuteHandler.getTotalNumberOfDonutInList();
 	}
 	
@@ -149,13 +158,12 @@ public class CafeHandler {
 		return true;
 	}
 	
-	public double getCoffeePrice() {
+	public String getCoffeePrice() {
 		double ret = 0.0;
-		if (brewedCoffee == null) {
-			return ret;
+		if (brewedCoffee != null) {
+			ret = brewedCoffee.itemPrice();
 		}
-		ret = brewedCoffee.itemPrice();
-		return ret;
+		return getTwoUpToTwoDecimalPoint(ret);
 	}
 	
 	public boolean addToCoffeeOrder() {
@@ -171,5 +179,17 @@ public class CafeHandler {
 			coffeeHandler =  new Coffee();
 		}
 		return added;
+	}
+	
+	public String getCurrentOderTotal() {
+		return getTwoUpToTwoDecimalPoint(currentOrder.getTotalPrice());
+	}
+	
+	public String getCurrentOrderSalesTax() {
+		return getTwoUpToTwoDecimalPoint(currentOrder.getSalesTax());
+	}
+	
+	public String getCurrentOderSubTotal() {
+		return getTwoUpToTwoDecimalPoint(currentOrder.getSubTotal());
 	}
 }

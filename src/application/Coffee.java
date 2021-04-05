@@ -39,7 +39,4 @@ public class Coffee extends MenuItem{
 		
 		return ret;
 	}
-
-	
-
 }

@@ -15,7 +15,7 @@ public class MainScreenController {
 	final int HEIGHT = 650;
 	
 	private Stage donuteStage;
-	private Stage currentOrderStage;
+	
 	private Stage storeOrderStage;
 	private Stage coffeeStage;
 
@@ -45,16 +45,15 @@ public class MainScreenController {
     @FXML
     void CurrentOrderButtonPress(ActionEvent event) {
     	try {
-    		if (currentOrderStage == null) {
-    			FXMLLoader loader = new FXMLLoader(getClass().getResource("CurrentOrderView.fxml"));
-    			currentOrderStage = new Stage();
-    			Scene scene = new Scene(loader.load(),WIDTH,HEIGHT);
-    			currentOrderStage.setScene(scene);
-    			currentOrderStage.setTitle("Current Order");
+    		FXMLLoader loader = new FXMLLoader(getClass().getResource("CurrentOrderView.fxml"));
+    		Stage currentOrderStage = new Stage();
+    		Scene scene = new Scene(loader.load(),WIDTH,HEIGHT);
+    		currentOrderStage.setScene(scene);
+    		currentOrderStage.setTitle("Current Order");
     			
-    			CurrentOrderController controller = loader.getController();
-    			controller.setMainController(this);
-    		}
+    		CurrentOrderController controller = loader.getController();
+    		controller.setMainController(this);
+    		
 			currentOrderStage.show();
 			currentOrderStage.requestFocus();
     	} catch(Exception e) {

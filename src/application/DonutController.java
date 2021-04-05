@@ -79,7 +79,7 @@ public class DonutController implements Initializable{
     	
     	String info = typeOfDounte +"["+flower+"]"+"["+count+"]";
     	PlaceDountOrderListData.add(info);
-    	DounteAmountTextField.setText(String.valueOf(handler.getTotalPriceForDonut()));
+    	DounteAmountTextField.setText(handler.getTotalPriceForDonut());
     	
     	if(PlaceDountOrderListData.size() == STARTCOUNT) {
     		DounteOrderListBox.getSelectionModel().selectFirst();
@@ -107,7 +107,7 @@ public class DonutController implements Initializable{
     		CafeHandler handler = mainController.getCafeHandler();
     		handler.removeDounteFromList(index);
     		
-    		DounteAmountTextField.setText(String.valueOf(handler.getTotalPriceForDonut()));
+    		DounteAmountTextField.setText(handler.getTotalPriceForDonut());
     	}
     	else {
     		Logger.appendText("Dounts List is empty.\n");
@@ -126,7 +126,7 @@ public class DonutController implements Initializable{
     	}
     	if (handler.addToDonutsOrder()) {
     		PlaceDountOrderListData.clear();
-    		DounteAmountTextField.setText(String.valueOf(handler.getTotalPriceForDonut()));
+    		DounteAmountTextField.setText(handler.getTotalPriceForDonut());
     		Logger.appendText("Dounts List is added to Current order.\n");
     	}
   }
@@ -145,7 +145,7 @@ public class DonutController implements Initializable{
     		NumberOfCountComboBox.getItems().add(String.valueOf(index));
     	}
     	
-    	DounteAmountTextField.setText(String.valueOf(handler.getTotalPriceForDonut()));
+    	DounteAmountTextField.setText(handler.getTotalPriceForDonut());
 	}
 	
 	
