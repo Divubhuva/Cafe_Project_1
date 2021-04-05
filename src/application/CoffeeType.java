@@ -8,10 +8,10 @@ public class CoffeeType {
 	private static final double BASEPRICE = 1.99;
 	protected double priceIncrease = 0.0;
 	protected double pricePerAddIn = 0.20;
-	private int count = 0;
+	private int count = 1;
 	protected String sizeofCoffee = "";
 	
-	private ArrayList<String> addedInList;
+	private ArrayList<String> addedInList = new ArrayList<String>();
 	private final ArrayList<String> AddIns = new ArrayList<String>(Arrays.asList("Cream", "Syrup", "Milk", "Caramel", "Whipped Cream"));
 	
 	
@@ -23,6 +23,14 @@ public class CoffeeType {
 		boolean ret = false;
 		if (AddIns.contains(addIn)) {
 			ret = addedInList.add(addIn);
+		}
+		return ret;
+	}
+	
+	public boolean removeAddIns(String addIn) {
+		boolean ret = false;
+		if (AddIns.contains(addIn)) {
+			ret = addedInList.remove(addIn);
 		}
 		return ret;
 	}

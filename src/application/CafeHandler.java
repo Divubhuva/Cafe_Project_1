@@ -100,7 +100,7 @@ public class CafeHandler {
 		return ret;
 	}
 	
-	public boolean selectSizeOfCoffee(String size , ArrayList<String> selectedAddIn) {
+	public boolean selectSizeOfCoffee(String size, ArrayList<String> selectedAddIn, int count) {
 		
 		brewedCoffee = null;
 		if (size.compareTo( new CoffeeShort().getSizeOfCoffee()) == 0) {
@@ -121,8 +121,55 @@ public class CafeHandler {
 		}
 		else {
 			brewedCoffee.addAddIns(selectedAddIn);
+			brewedCoffee.setNumberOfCoffee(count);
 		}
 		
 		return true;
+	}
+	
+	
+	public boolean addAddIn(String addIn) {
+		if (brewedCoffee == null) {
+			return false;
+		}
+		return brewedCoffee.addAddIns(addIn);
+	}
+	public boolean removeAddIn(String addIn) {
+		if (brewedCoffee == null) {
+			return false;
+		}
+		return brewedCoffee.removeAddIns(addIn);
+	}
+	
+	public boolean setNumberOfCoffee(int numberOFCoffee) {
+		if (brewedCoffee == null) {
+			return false;
+		}
+		brewedCoffee.setNumberOfCoffee(numberOFCoffee);
+		return true;
+	}
+	
+	public double getCoffeePrice() {
+		double ret = 0.0;
+		if (brewedCoffee == null) {
+			return ret;
+		}
+		ret = brewedCoffee.itemPrice();
+		return ret;
+	}
+	
+	public boolean addToCoffeeOrder() {
+		boolean added = false;
+		if (brewedCoffee == null) {
+			return added;
+		}
+		coffeeHandler.add(brewedCoffee);
+		
+		added = currentOrder.add(coffeeHandler);
+		if (added) {
+			brewedCoffee = null;
+			coffeeHandler =  new Coffee();
+		}
+		return added;
 	}
 }
