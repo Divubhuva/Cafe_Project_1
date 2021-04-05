@@ -12,6 +12,7 @@ public class CafeHandler {
     private static final int MAXDONUTCOUNT = 100;
 	
     private Dounte donuteHandler = new Dounte();
+    private CurrentOrder currentOrder = new CurrentOrder();
     
 	CafeHandler(){
 		availableDounts.put(new CakeDonut().getDountName(), new CakeDonut());
@@ -62,5 +63,17 @@ public class CafeHandler {
 		return donuteHandler.getTotalNumberOfDonutInList();
 	}
 	
-
+	public boolean addToDonutsOrder() {
+		boolean added = false;
+		
+		if (donuteHandler.getTotalNumberOfDonutInList() == 0) {
+			return added;
+		}
+		
+		added = currentOrder.add(donuteHandler);
+		if (added) {
+			donuteHandler = new Dounte();
+		}
+		return added;
+	}
 }

@@ -109,15 +109,27 @@ public class DonutController implements Initializable{
     		
     		DounteAmountTextField.setText(String.valueOf(handler.getTotalPriceForDonut()));
     	}
+    	else {
+    		Logger.appendText("Dounts List is empty.\n");
+    	}
     }
 	
     @FXML
     void AddToOrderButtonPress(ActionEvent event) {
     	
-    	Logger.setText("hello");
-        
-
-    }
+    	CafeHandler handler = mainController.getCafeHandler();
+		
+    	Logger.clear();
+    	
+    	if (handler.getNumberOfOrderDonuts() == 0) {
+    		Logger.appendText("Dounts List is empty.\n");
+    	}
+    	if (handler.addToDonutsOrder()) {
+    		PlaceDountOrderListData.clear();
+    		DounteAmountTextField.setText(String.valueOf(handler.getTotalPriceForDonut()));
+    		Logger.appendText("Dounts List is added to Current order.\n");
+    	}
+  }
 
 	
 	public void setMainController(MainScreenController controller) {
