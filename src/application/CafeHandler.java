@@ -192,4 +192,8 @@ public class CafeHandler {
 	public String getCurrentOderSubTotal() {
 		return getTwoUpToTwoDecimalPoint(currentOrder.getSubTotal());
 	}
+	
+	public ArrayList<String> getCurrentOrderList(){
+		return currentOrder.getOrderList();
+	}
 }

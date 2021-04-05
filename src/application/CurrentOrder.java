@@ -22,7 +22,7 @@ public class CurrentOrder implements Customizable {
 
 	@Override
 	public boolean remove(Object obj) {
-		if(!(obj instanceof CurrentOrder))
+		if(!(obj instanceof MenuItem))
         {
             return false;
         }
@@ -52,4 +52,18 @@ public class CurrentOrder implements Customizable {
 		double totalPrice = getSubTotal() + getSalesTax();
 		return totalPrice;
 	}
+	
+	public ArrayList<String> getOrderList() {
+		ArrayList<String> ret = new ArrayList<String>();
+		
+		if (orderItems.isEmpty()) {
+			return ret;
+		}
+		
+		for(int index = 0; index <orderItems.size();index++) {
+			ret.addAll(orderItems.get(index).getOrderList());
+		}
+		return ret;
+	}
+	
 }

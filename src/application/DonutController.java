@@ -93,7 +93,7 @@ public class DonutController implements Initializable{
     	
     	FlavorListData.clear();
     	FlavorListData.addAll(handler.getDountsFlavor(selectedType));
-    	
+    	FlowersList.getSelectionModel().selectFirst();
     	
     }
 

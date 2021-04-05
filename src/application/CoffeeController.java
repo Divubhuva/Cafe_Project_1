@@ -75,7 +75,7 @@ public class CoffeeController implements Initializable {
     	
     	handler.selectSizeOfCoffee(typeOfsize, new ArrayList<String>(), count);
     	
-    	Logger.appendText("Coffee is added to oreder");
+    	Logger.appendText("Coffee is added to oreder.\n");
     }
 
     @FXML
@@ -122,6 +122,7 @@ public class CoffeeController implements Initializable {
     	CafeHandler handler = mainController.getCafeHandler();
     	int count = NumberOfCoffeCombo.getSelectionModel().getSelectedIndex() + STARTCOUNT;
     	handler.setNumberOfCoffee(count);
+    	DollaramountTextField.setText(String.valueOf(handler.getCoffeePrice()));
     }
 
     @FXML
