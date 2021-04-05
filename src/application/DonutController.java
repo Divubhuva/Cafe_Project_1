@@ -8,11 +8,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class DonutController implements Initializable{
 
@@ -39,6 +42,9 @@ public class DonutController implements Initializable{
     @FXML
     private TextField DounteAmountTextField;
 
+    @FXML
+    private TextArea Logger;
+    
     private ObservableList<String> DountTypeList = FXCollections.observableArrayList(); 	
     private ObservableList<String> FlavorListData = FXCollections.observableArrayList();
     private ObservableList<String> PlaceDountOrderListData = FXCollections.observableArrayList();
@@ -74,6 +80,10 @@ public class DonutController implements Initializable{
     	String info = typeOfDounte +"["+flower+"]"+"["+count+"]";
     	PlaceDountOrderListData.add(info);
     	DounteAmountTextField.setText(String.valueOf(handler.getTotalPriceForDonut()));
+    	
+    	if(PlaceDountOrderListData.size() == STARTCOUNT) {
+    		DounteOrderListBox.getSelectionModel().selectFirst();
+    	}
     }
 
     @FXML
@@ -101,6 +111,13 @@ public class DonutController implements Initializable{
     	}
     }
 	
+    @FXML
+    void AddToOrderButtonPress(ActionEvent event) {
+    	
+    	Logger.setText("hello");
+        
+
+    }
 
 	
 	public void setMainController(MainScreenController controller) {
@@ -117,5 +134,7 @@ public class DonutController implements Initializable{
     	}
     	
     	DounteAmountTextField.setText(String.valueOf(handler.getTotalPriceForDonut()));
-	} 
+	}
+	
+	
 }

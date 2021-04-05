@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 public class MainScreenController {
 
 	final int WIDTH = 600;
-	final int HEIGHT = 400;
+	final int HEIGHT = 650;
 	
 	private Stage donuteStage;
 	private Stage currentOrderStage;
