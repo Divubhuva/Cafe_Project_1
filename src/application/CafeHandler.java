@@ -12,7 +12,7 @@ public class CafeHandler {
 	private HashMap<String, CoffeeType> availableSizeOfCoffee = new HashMap<String, CoffeeType>();
     private static final int MAXDONUTCOUNT = 100;
 	
-    private Dounte donuteHandler = new Dounte();
+    private Dounte donutHandler = new Dounte();
     private CurrentOrder currentOrder = new CurrentOrder();
     private Coffee coffeeHandler  = new Coffee();
     private CoffeeType brewedCoffee = null;
@@ -73,32 +73,32 @@ public class CafeHandler {
 		
 		dounte.setFlower(flowerName);
 		dounte.setNumberOfDounte(count);
-		return donuteHandler.add(dounte);
+		return donutHandler.add(dounte);
 	}
 	
 	public boolean removeDounteFromList(int index) {
-		DounteType dounte = donuteHandler.getItem(index);
-		return donuteHandler.remove(dounte);
+		DounteType dounte = donutHandler.getItem(index);
+		return donutHandler.remove(dounte);
 	}
 	
 	public String getTotalPriceForDonut() {
-		return getTwoUpToTwoDecimalPoint(donuteHandler.itemPrice());
+		return getTwoUpToTwoDecimalPoint(donutHandler.itemPrice());
 	}
 	
 	public int getNumberOfOrderDonuts() {
-		return donuteHandler.getTotalNumberOfDonutInList();
+		return donutHandler.getTotalNumberOfDonutInList();
 	}
 	
 	public boolean addToDonutsOrder() {
 		boolean added = false;
 		
-		if (donuteHandler.getTotalNumberOfDonutInList() == 0) {
+		if (donutHandler.getTotalNumberOfDonutInList() == 0) {
 			return added;
 		}
 		
-		added = currentOrder.add(donuteHandler);
+		added = currentOrder.add(donutHandler);
 		if (added) {
-			donuteHandler = new Dounte();
+			donutHandler = new Dounte();
 		}
 		return added;
 	}
