@@ -9,6 +9,7 @@ public class CoffeeType {
 	protected double priceIncrease = 0.0;
 	protected double pricePerAddIn = 0.20;
 	private int count = 0;
+	protected String sizeofCoffee = "";
 	
 	private ArrayList<String> addedInList;
 	private final ArrayList<String> AddIns = new ArrayList<String>(Arrays.asList("cream", "syrup", "milk", "caramel", "whipped cream"));
@@ -36,4 +37,8 @@ public class CoffeeType {
 	public int getNumberOfCoffee() {
 		return count;
 	}
+	
+	public String getSizeOfCoffee() {
+		return sizeofCoffee;
+	} 
 }

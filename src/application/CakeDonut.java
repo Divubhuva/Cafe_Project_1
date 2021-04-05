@@ -16,5 +16,8 @@ public class CakeDonut extends DounteType{
 		return FLOWERS;
 	}
 	
-	
+	@Override
+	public String getDountName() {
+		return "CakeDonut";
+	}
 }

@@ -12,6 +12,11 @@ public class DounteType {
 		return ret;
 	}
 	
+	public String getDountName() {
+		
+		return "";
+	}
+	
 	public double itemPrice() {
 		return pricePerDounter * getNumberOfDounte();
 	}

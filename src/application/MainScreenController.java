@@ -19,6 +19,8 @@ public class MainScreenController {
 	private Stage storeOrderStage;
 	private Stage coffeeStage;
 
+	private CafeHandler handler = new CafeHandler();
+	
     @FXML
     void CoffeeButtonPress(ActionEvent event) {
     	try {
@@ -103,5 +105,7 @@ public class MainScreenController {
     }
 
 	
-
+    public CafeHandler getCafeHandler() {
+    	return handler;
+    }
 }

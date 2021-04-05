@@ -16,5 +16,8 @@ public class Donuthole extends DounteType{
 		return FLOWERS;
 	}
 	
-	
+	@Override
+	public String getDountName() {
+		return "Donuthole";
+	}
 }

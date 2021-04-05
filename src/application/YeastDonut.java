@@ -16,5 +16,10 @@ public class YeastDonut extends DounteType{
 	public ArrayList<String> getAllFlowers(){
 		return FLOWERS;
 	}
+	
+	@Override
+	public String getDountName() {
+		return "YeastDonut";
+	}
 
 }
