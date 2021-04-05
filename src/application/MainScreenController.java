@@ -18,7 +18,7 @@ public class MainScreenController {
 	private Stage currentOrderStage;
 	private Stage storeOrderStage;
 	private Stage coffeeStage;
-	
+
     @FXML
     void CoffeeButtonPress(ActionEvent event) {
     	try {
