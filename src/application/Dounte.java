@@ -40,5 +40,17 @@ public class Dounte extends MenuItem {
 		}
 		return price;
 	}
-
+	
+	
+	public DounteType getItem(int index) {
+		DounteType ret = null;
+		if(index >= 0  && index <dountList.size() ) {
+			ret = dountList.get(index);
+		}
+		return ret;
+	}
+	
+	public int getTotalNumberOfDonutInList() {
+		return dountList.size();
+	}
 }

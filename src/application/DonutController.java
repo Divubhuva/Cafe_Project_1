@@ -41,6 +41,7 @@ public class DonutController implements Initializable{
 
     private ObservableList<String> DountTypeList = FXCollections.observableArrayList(); 	
     private ObservableList<String> FlavorListData = FXCollections.observableArrayList();
+    private ObservableList<String> PlaceDountOrderListData = FXCollections.observableArrayList();
     
     private static final int STARTCOUNT = 1;
     
@@ -54,12 +55,25 @@ public class DonutController implements Initializable{
     	
     	NumberOfCountComboBox.setValue(String.valueOf(STARTCOUNT));
     	
+    	DounteOrderListBox.setItems(PlaceDountOrderListData);
+    	DounteOrderListBox.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+    	
+    	
 	}
     
     
     @FXML
     void AddToListButtonPress(ActionEvent event) {
+    	String typeOfDounte  = DonuteTypeComboBox.getSelectionModel().getSelectedItem();
+    	String flower = FlowersList.getSelectionModel().getSelectedItem();
+    	int count = NumberOfCountComboBox.getSelectionModel().getSelectedIndex() + STARTCOUNT;
     	
+    	CafeHandler handler = mainController.getCafeHandler();
+    	handler.addDounteToList(typeOfDounte, flower, count);
+    	
+    	String info = typeOfDounte +"["+flower+"]"+"["+count+"]";
+    	PlaceDountOrderListData.add(info);
+    	DounteAmountTextField.setText(String.valueOf(handler.getTotalPriceForDonut()));
     }
 
     @FXML
@@ -75,7 +89,16 @@ public class DonutController implements Initializable{
 
     @FXML
     void RemoveFromListButtonPress(ActionEvent event) {
-
+    	if (!DounteOrderListBox.getSelectionModel().isEmpty()) {
+    		String selectedText = DounteOrderListBox.getSelectionModel().getSelectedItem();
+    		int index = PlaceDountOrderListData.indexOf(selectedText);
+    	
+    		PlaceDountOrderListData.remove(index);
+    		CafeHandler handler = mainController.getCafeHandler();
+    		handler.removeDounteFromList(index);
+    		
+    		DounteAmountTextField.setText(String.valueOf(handler.getTotalPriceForDonut()));
+    	}
     }
 	
 
@@ -92,5 +115,7 @@ public class DonutController implements Initializable{
     	for(int index = STARTCOUNT ; index <= handler.getMaxDocuntCount(); index++) {
     		NumberOfCountComboBox.getItems().add(String.valueOf(index));
     	}
+    	
+    	DounteAmountTextField.setText(String.valueOf(handler.getTotalPriceForDonut()));
 	} 
 }

@@ -11,6 +11,8 @@ public class CafeHandler {
 	private HashMap<String, CoffeeType> availableSizeOfCoffee = new HashMap<String, CoffeeType>();
     private static final int MAXDONUTCOUNT = 100;
 	
+    private Dounte donuteHandler = new Dounte();
+    
 	CafeHandler(){
 		availableDounts.put(new CakeDonut().getDountName(), new CakeDonut());
 		availableDounts.put(new YeastDonut().getDountName(), new YeastDonut());
@@ -38,5 +40,25 @@ public class CafeHandler {
 	
 	public int getMaxDocuntCount() {
 		return MAXDONUTCOUNT;
+	}
+	
+	public void addDounteToList(String dounteType, String flowerName, int count) {
+		DounteType dounte = availableDounts.get(dounteType);
+		dounte.setFlower(flowerName);
+		dounte.setNumberOfDounte(count);
+		donuteHandler.add(dounte);
+	}
+	
+	public boolean removeDounteFromList(int index) {
+		DounteType dounte = donuteHandler.getItem(index);
+		return donuteHandler.remove(dounte);
+	}
+	
+	public double getTotalPriceForDonut() {
+		return donuteHandler.itemPrice();
+	}
+	
+	public double getNumberOfOrderDonuts() {
+		return donuteHandler.getTotalNumberOfDonutInList();
 	}
 }
