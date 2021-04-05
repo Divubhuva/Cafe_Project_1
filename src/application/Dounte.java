@@ -29,8 +29,8 @@ public class Dounte extends MenuItem {
 	}
 
 	@Override
-	public Double itemPrice() {
-		Double price = 0.0;
+	public double itemPrice() {
+		double price = 0.0;
 		if(dountList.isEmpty()) {
 			return price;
 		}

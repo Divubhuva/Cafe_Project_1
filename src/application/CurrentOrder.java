@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class CurrentOrder implements Customizable {
 
-	private final Double SALESTAX = 6.625;
-	private final Double RESPECTTO = 100.00;
+	private final double SALESTAX = 6.625;
+	private final double RESPECTTO = 100.00;
 	
 	ArrayList<MenuItem> orderItems = new ArrayList<MenuItem>();
 	
@@ -30,8 +30,8 @@ public class CurrentOrder implements Customizable {
         return orderItems.remove(items);
 	}
 	
-	public Double getSubTotal() {
-		Double ret = 0.0;
+	public double getSubTotal() {
+		double ret = 0.0;
 		
 		if (orderItems.isEmpty()) {
 			return ret;
@@ -43,13 +43,13 @@ public class CurrentOrder implements Customizable {
 		return ret;
 	}
 	
-	public Double getSalesTax() {
-		Double taxAmount = ((getSubTotal()/RESPECTTO) * SALESTAX);  
+	public double getSalesTax() {
+		double taxAmount = ((getSubTotal()/RESPECTTO) * SALESTAX);  
 		return taxAmount;
 	}
 
-	public Double getTotalPrice() {
-		Double totalPrice = getSubTotal() + getSalesTax();
+	public double getTotalPrice() {
+		double totalPrice = getSubTotal() + getSalesTax();
 		return totalPrice;
 	}
 }

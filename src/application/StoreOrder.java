@@ -34,6 +34,7 @@ public class StoreOrder implements Customizable{
         
 		if (index >= 0  && index < orderList.size()) {
 			orderList.remove(index);
+			return true;
 		}
         return false;
 	}

@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 public class CakeDonut extends DounteType{
 	private final ArrayList<String> FLOWERS = new ArrayList<String>(Arrays.asList("e","f","g"));
-	private final Double PRICE = 1.59;
+	private final double PRICE = 1.59;
 	
 	CakeDonut(){
 		pricePerDounter = PRICE;

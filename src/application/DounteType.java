@@ -5,14 +5,14 @@ import java.util.ArrayList;
 public class DounteType {
 	private int count = 0;
 	private String flower = "";
-	protected Double pricePerDounter = 0.0;
+	protected double pricePerDounter = 0.0;
 	
 	public ArrayList<String> getAllFlowers(){
 		ArrayList<String> ret  = new ArrayList<String>();
 		return ret;
 	}
 	
-	public Double itemPrice() {
+	public double itemPrice() {
 		return pricePerDounter * getNumberOfDounte();
 	}
 	
