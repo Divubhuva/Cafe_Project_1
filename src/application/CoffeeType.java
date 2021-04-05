@@ -12,15 +12,25 @@ public class CoffeeType {
 	protected String sizeofCoffee = "";
 	
 	private ArrayList<String> addedInList;
-	private final ArrayList<String> AddIns = new ArrayList<String>(Arrays.asList("cream", "syrup", "milk", "caramel", "whipped cream"));
+	private final ArrayList<String> AddIns = new ArrayList<String>(Arrays.asList("Cream", "Syrup", "Milk", "Caramel", "Whipped Cream"));
 	
 	
 	public ArrayList<String> getListOfAddIn(){
 		return AddIns;
 	}
 	
-	public void addAddIns(String addIn) {
-		addedInList.add(addIn);
+	public boolean addAddIns(String addIn) {
+		boolean ret = false;
+		if (AddIns.contains(addIn)) {
+			ret = addedInList.add(addIn);
+		}
+		return ret;
+	}
+	
+	public void addAddIns(ArrayList<String> selectedAddIn) {
+		for(int index = 0; index < selectedAddIn.size();index++ ) {
+			addedInList.add(selectedAddIn.get(index));
+		}
 	}
 	
 	public ArrayList<String> getAddIns(){

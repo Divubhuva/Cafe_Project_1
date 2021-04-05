@@ -14,7 +14,7 @@ public class CafeHandler {
     private Dounte donuteHandler = new Dounte();
     private CurrentOrder currentOrder = new CurrentOrder();
     private Coffee coffeeHandler  = new Coffee();
-    private CoffeeType brewedCoffee = new CoffeeType();
+    private CoffeeType brewedCoffee = null;
     
 	CafeHandler(){
 		availableDounts.put(new CakeDonut().getDountName(), new CakeDonut());
@@ -98,5 +98,31 @@ public class CafeHandler {
 		ArrayList<String> ret = new ArrayList<String>();
 		ret.addAll(availableSizeOfCoffee.keySet());
 		return ret;
+	}
+	
+	public boolean selectSizeOfCoffee(String size , ArrayList<String> selectedAddIn) {
+		
+		brewedCoffee = null;
+		if (size.compareTo( new CoffeeShort().getSizeOfCoffee()) == 0) {
+			brewedCoffee = new CoffeeShort();
+		}
+		else if (size.compareTo( new CoffeeTall().getSizeOfCoffee()) == 0) {
+			brewedCoffee = new CoffeeTall();
+		}
+		else if (size.compareTo( new CoffeeGrande().getSizeOfCoffee()) == 0) {
+			brewedCoffee = new CoffeeGrande();
+		}
+		else if (size.compareTo( new CoffeeVenti().getSizeOfCoffee()) == 0) {
+			brewedCoffee = new CoffeeVenti();
+		}
+		
+		if ( brewedCoffee == null) {
+			return false;
+		}
+		else {
+			brewedCoffee.addAddIns(selectedAddIn);
+		}
+		
+		return true;
 	}
 }
