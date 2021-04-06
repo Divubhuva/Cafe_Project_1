@@ -9,9 +9,21 @@ public class CurrentOrder implements Customizable {
 
 	private final double SALESTAX = 6.625;
 	private final double RESPECTTO = 100.00;
-	
-	
 	private ObservableList<MenuItem> orderItems = FXCollections.observableArrayList(); 
+	private int orderNumber = -1;
+	
+	public CurrentOrder() {
+		
+	}
+	
+	public CurrentOrder(CurrentOrder src, int orderNumber) {
+		this.orderItems.addAll(src.orderItems);
+		this.orderNumber = orderNumber;
+	}
+	
+	public int getUniqueOrderNumber() {
+		return orderNumber;
+	}
 	
 	@Override
 	public boolean add(Object obj) {

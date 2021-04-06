@@ -15,9 +15,10 @@ public class CafeHandler {
     private static final int MAXDONUTCOUNT = 100;
 	
     private Dounte donuteHandler = new Dounte();
-    private CurrentOrder currentOrder = new CurrentOrder();
+    private final CurrentOrder currentOrder = new CurrentOrder();
     private Coffee coffeeHandler  = new Coffee();
     private CoffeeType brewedCoffee = null;
+    private final StoreOrder storeOrder = new StoreOrder();
     
     public String getTwoUpToTwoDecimalPoint(double val)
     {
@@ -197,6 +198,7 @@ public class CafeHandler {
 	public ArrayList<String> getCurrentOrderStringList(){
 		ArrayList<String> ret = new ArrayList<String>();
 		ObservableList<MenuItem> orderItems = getCurrentOrderList();
+		
 		if (orderItems.isEmpty()) {
 			return ret;
 		}
@@ -249,4 +251,26 @@ public class CafeHandler {
 		}
 		return removed;
 	}
+	
+	public boolean placeOrderInStore() {
+		boolean ret = false;
+		if(getCurrentOrderList().size() != 0) {
+			ret = storeOrder.add(new CurrentOrder(currentOrder,storeOrder.generateOrderNumber()));
+			currentOrder.getObserveOrderList().clear();
+		}
+		return ret;
+	}
+	
+	public ObservableList<CurrentOrder> getStoreOrderList(){
+		return storeOrder.getObserveOrderList();
+	}
+	
+	public boolean RemoveOrder(int index) {
+		return storeOrder.remove(index);
+	}
+	
+	public String exportDatabase() {
+		return storeOrder.exportDatabase();
+	}
+	
 }

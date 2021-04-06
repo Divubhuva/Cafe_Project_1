@@ -35,7 +35,7 @@ public class Coffee extends MenuItem{
 		
 		if(index >= 0 && index < coffeeList.size()) {
 			CoffeeType order = coffeeList.get(index);
-			remove = coffeeList.remove(order);
+			remove = remove(order);
 		}
 		
         return remove;

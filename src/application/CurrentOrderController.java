@@ -41,7 +41,9 @@ public class CurrentOrderController implements Initializable{
 	 @FXML
 	 void PlaceOrderButtonPress(ActionEvent event) {
 		 CafeHandler handler = mainController.getCafeHandler();
-		 handler.getCurrentOrderList().clear();
+		 if (handler.placeOrderInStore()) {
+			 Logger.appendText("Your order is placed.\n");
+		 }
 	 }
 
 	 @FXML
@@ -49,7 +51,9 @@ public class CurrentOrderController implements Initializable{
 		 CafeHandler handler = mainController.getCafeHandler();
 		 String selectedString = PrinterArea.getSelectionModel().getSelectedItem();
 		 currentOrderListInfo.remove(selectedString);
-		 handler.RemoveItemFromCurrentOrder(selectedString);
+		 if (handler.RemoveItemFromCurrentOrder(selectedString)) {
+			 Logger.appendText("Selected Item is remove sucessfully.\n");
+		 }
 	 }
 
 	

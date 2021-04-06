@@ -38,7 +38,7 @@ public class Dounte extends MenuItem {
 		
 		if(index >= 0 && index < dountList.size()) {
 			DounteType order = dountList.get(index);
-			remove = dountList.remove(order);
+			remove = remove(order);
 		}
 		
         return remove;
