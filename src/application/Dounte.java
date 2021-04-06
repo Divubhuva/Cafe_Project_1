@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Dounte extends MenuItem {
 
-	ArrayList<DounteType> dountList = new ArrayList<DounteType>();
+	private final ArrayList<DounteType> dountList = new ArrayList<DounteType>();
 	
 	@Override
 	public boolean add(Object obj) {

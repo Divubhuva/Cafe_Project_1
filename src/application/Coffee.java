@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Coffee extends MenuItem{
 
-	ArrayList<CoffeeType> coffeeList = new ArrayList<CoffeeType>();
+	private final ArrayList<CoffeeType> coffeeList = new ArrayList<CoffeeType>();
 	
 	@Override
 	public boolean add(Object obj) {
