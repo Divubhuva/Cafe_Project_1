@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class CakeDonut extends DounteType{
-	private final ArrayList<String> FLOWERS = new ArrayList<String>(Arrays.asList("e","f","g"));
+	private final ArrayList<String> FLOWERS = new ArrayList<String>(Arrays.asList("Pineapple","Lemony Glazed","Carrot Cake"));
 	private final double PRICE = 1.59;
 	
 	CakeDonut(){

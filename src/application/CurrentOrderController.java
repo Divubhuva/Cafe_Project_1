@@ -44,15 +44,23 @@ public class CurrentOrderController implements Initializable{
 		 if (handler.placeOrderInStore()) {
 			 Logger.appendText("Your order is placed.\n");
 		 }
+		 else {
+			 Logger.appendText("Your order is not placed. Orderlist may empty.\n"); 
+		 }
 	 }
 
 	 @FXML
      void RemoveSelectedButtonPress(ActionEvent event) {
 		 CafeHandler handler = mainController.getCafeHandler();
 		 String selectedString = PrinterArea.getSelectionModel().getSelectedItem();
-		 currentOrderListInfo.remove(selectedString);
-		 if (handler.RemoveItemFromCurrentOrder(selectedString)) {
-			 Logger.appendText("Selected Item is remove sucessfully.\n");
+		 if(selectedString != null) {
+			 currentOrderListInfo.remove(selectedString);
+			 if (handler.RemoveItemFromCurrentOrder(selectedString)) {
+				 Logger.appendText("Selected Item is remove sucessfully.\n");
+			 }
+		 }
+		 else {
+			 Logger.appendText("Item is not selected.\n");
 		 }
 	 }
 
