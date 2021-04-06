@@ -181,6 +181,10 @@ public class StoreOrderController implements Initializable{
 			OrderNumberComboBox.getSelectionModel().selectFirst();
 			PrintOrderInfo(0);
 		}
+		else {
+			orderItemList.clear();
+			TotalAmountOfOrder.setText(handler.getTwoUpToTwoDecimalPoint(0));
+		}
 	}
 	
 	public void setMainController(MainScreenController controller) {
