@@ -81,6 +81,10 @@ public class StoreOrderController implements Initializable{
 				orderItemList.add(Items.toString(itemIndex));
 			}
 		}
+		if (!orderItemList.isEmpty()) {
+			PrintArea.getSelectionModel().selectFirst();
+		}
+		
 		TotalAmountOfOrder.setText(handler.getTwoUpToTwoDecimalPoint(order.getTotalPrice()));
     }
 	
