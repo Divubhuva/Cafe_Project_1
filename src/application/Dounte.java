@@ -28,6 +28,22 @@ public class Dounte extends MenuItem {
         return dountList.remove(order);
 	}
 
+	
+	@Override
+	public boolean remove(int index) {
+		boolean remove = false;
+		if (dountList.isEmpty()) {
+			return remove;
+		}
+		
+		if(index >= 0 && index < dountList.size()) {
+			DounteType order = dountList.get(index);
+			remove = dountList.remove(order);
+		}
+		
+        return remove;
+	}
+	
 	@Override
 	public double itemPrice() {
 		double price = 0.0;
@@ -41,34 +57,40 @@ public class Dounte extends MenuItem {
 		return price;
 	}
 	
-	
-	public DounteType getItem(int index) {
-		DounteType ret = null;
-		if(index >= 0  && index <dountList.size() ) {
-			ret = dountList.get(index);
-		}
-		return ret;
-	}
-	
-	public int getTotalNumberOfDonutInList() {
+	public int getNumberItems() {
 		return dountList.size();
 	}
 	
 	
+//	@Override
+//	public ArrayList<String> getOrderList(){
+//		ArrayList<String> ret = new ArrayList<String>();
+//		
+//		if (dountList.isEmpty()) {
+//			return ret;
+//		}
+//		
+//		for (int index = 0; index  < dountList.size(); ++index) {
+//			DounteType currentDount = dountList.get(index);
+//			String infoString = currentDount.getDountName() +" [ "+currentDount.getFlower() +" ] [ "+currentDount.getNumberOfDounte()+" ]";
+//			ret.add(infoString);
+//		}
+//		
+//		return ret;
+//	}
+	
 	@Override
-	public ArrayList<String> getOrderList(){
-		ArrayList<String> ret = new ArrayList<String>();
-		
+	public String toString(int index) {
+		String  ret = "";
 		if (dountList.isEmpty()) {
 			return ret;
 		}
 		
-		for (int index = 0; index  < dountList.size(); ++index) {
+		if(index >= 0 && index < dountList.size()) {
 			DounteType currentDount = dountList.get(index);
-			String infoString = currentDount.getDountName() +" [ "+currentDount.getFlower() +" ] [ "+currentDount.getNumberOfDounte()+" ]";
-			ret.add(infoString);
+			ret = currentDount.getDountName() +" [ "+currentDount.getFlower() +" ] [ "+currentDount.getNumberOfDounte()+" ]";
 		}
-		
 		return ret;
+		
 	}
 }

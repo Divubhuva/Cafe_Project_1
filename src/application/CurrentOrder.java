@@ -2,12 +2,16 @@ package application;
 
 import java.util.ArrayList;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 public class CurrentOrder implements Customizable {
 
 	private final double SALESTAX = 6.625;
 	private final double RESPECTTO = 100.00;
 	
-	ArrayList<MenuItem> orderItems = new ArrayList<MenuItem>();
+	
+	private ObservableList<MenuItem> orderItems = FXCollections.observableArrayList(); 
 	
 	@Override
 	public boolean add(Object obj) {
@@ -53,17 +57,8 @@ public class CurrentOrder implements Customizable {
 		return totalPrice;
 	}
 	
-	public ArrayList<String> getOrderList() {
-		ArrayList<String> ret = new ArrayList<String>();
-		
-		if (orderItems.isEmpty()) {
-			return ret;
-		}
-		
-		for(int index = 0; index <orderItems.size();index++) {
-			ret.addAll(orderItems.get(index).getOrderList());
-		}
-		return ret;
+
+	public ObservableList<MenuItem> getObserveOrderList(){
+		return orderItems;
 	}
-	
 }

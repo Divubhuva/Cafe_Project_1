@@ -4,6 +4,8 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javafx.collections.ObservableList;
+
 
 
 public class CafeHandler {
@@ -77,8 +79,7 @@ public class CafeHandler {
 	}
 	
 	public boolean removeDounteFromList(int index) {
-		DounteType dounte = donuteHandler.getItem(index);
-		return donuteHandler.remove(dounte);
+		return donuteHandler.remove(index);
 	}
 	
 	public String getTotalPriceForDonut() {
@@ -86,13 +87,13 @@ public class CafeHandler {
 	}
 	
 	public int getNumberOfOrderDonuts() {
-		return donuteHandler.getTotalNumberOfDonutInList();
+		return donuteHandler.getNumberItems();
 	}
 	
 	public boolean addToDonutsOrder() {
 		boolean added = false;
 		
-		if (donuteHandler.getTotalNumberOfDonutInList() == 0) {
+		if (donuteHandler.getNumberItems() == 0) {
 			return added;
 		}
 		
@@ -193,7 +194,59 @@ public class CafeHandler {
 		return getTwoUpToTwoDecimalPoint(currentOrder.getSubTotal());
 	}
 	
-	public ArrayList<String> getCurrentOrderList(){
-		return currentOrder.getOrderList();
+	public ArrayList<String> getCurrentOrderStringList(){
+		ArrayList<String> ret = new ArrayList<String>();
+		ObservableList<MenuItem> orderItems = getCurrentOrderList();
+		if (orderItems.isEmpty()) {
+			return ret;
+		}
+			
+		for(int index = 0; index < orderItems.size();index++) {
+			MenuItem Items  = orderItems.get(index);
+			for(int itemIndex = 0; itemIndex < Items.getNumberItems();itemIndex++) {
+				ret.add(Items.toString(itemIndex));
+			}
+		}
+		return ret;
+	}
+	
+	public ObservableList<MenuItem> getCurrentOrderList(){
+		return currentOrder.getObserveOrderList();
+	}
+	
+	public boolean RemoveItemFromCurrentOrder(String itemString) {
+		boolean removed = false;
+		
+		ObservableList<MenuItem> orderItems = getCurrentOrderList();
+		if (orderItems.isEmpty()) {
+			return removed;
+		}
+			
+		for(int index = 0; index < orderItems.size();index++) {
+			
+			if (removed) {
+				continue;
+			}
+			
+			MenuItem Items  = orderItems.get(index);
+			for(int itemIndex = 0; itemIndex < Items.getNumberItems();itemIndex++) {
+				
+				if (removed) {
+					continue;
+				}
+				
+				String info = Items.toString(itemIndex);
+				
+				if (info.compareTo(itemString)== 0) {
+					removed = Items.remove(itemIndex);
+					
+					if (Items.getNumberItems() == 0) {
+						currentOrder.remove(Items);
+					}
+					
+				}
+			}
+		}
+		return removed;
 	}
 }
