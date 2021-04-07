@@ -19,7 +19,7 @@ public class MainScreenController {
 	private Stage storeOrderStage;
 	private Stage coffeeStage;
 
-	private CafeHandler handler = new CafeHandler();
+	private final CafeHandler handler = new CafeHandler();
 	
     @FXML
     void CoffeeButtonPress(ActionEvent event) {

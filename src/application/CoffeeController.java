@@ -46,7 +46,7 @@ public class CoffeeController implements Initializable {
     private TextArea Logger;
 
     private static final int STARTCOUNT = 1;
-    private ObservableList<String> coffeeSizeTypeList = FXCollections.observableArrayList(); 
+    private final ObservableList<String> coffeeSizeTypeList = FXCollections.observableArrayList(); 
     
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

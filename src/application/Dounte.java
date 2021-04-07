@@ -62,23 +62,6 @@ public class Dounte extends MenuItem {
 	}
 	
 	
-//	@Override
-//	public ArrayList<String> getOrderList(){
-//		ArrayList<String> ret = new ArrayList<String>();
-//		
-//		if (dountList.isEmpty()) {
-//			return ret;
-//		}
-//		
-//		for (int index = 0; index  < dountList.size(); ++index) {
-//			DounteType currentDount = dountList.get(index);
-//			String infoString = currentDount.getDountName() +" [ "+currentDount.getFlower() +" ] [ "+currentDount.getNumberOfDounte()+" ]";
-//			ret.add(infoString);
-//		}
-//		
-//		return ret;
-//	}
-	
 	@Override
 	public String toString(int index) {
 		String  ret = "";

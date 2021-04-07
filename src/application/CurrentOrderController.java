@@ -36,7 +36,7 @@ public class CurrentOrderController implements Initializable{
 	 
 	 private static final int STARTCOUNT = 1;
 
-	 private ObservableList<String> currentOrderListInfo = FXCollections.observableArrayList();
+	 private final ObservableList<String> currentOrderListInfo = FXCollections.observableArrayList();
 	 
 	 @FXML
 	 void PlaceOrderButtonPress(ActionEvent event) {
