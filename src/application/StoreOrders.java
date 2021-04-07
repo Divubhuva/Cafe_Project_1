@@ -4,31 +4,31 @@ import java.text.DecimalFormat;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class StoreOrder implements Customizable{
+public class StoreOrders implements Customizable{
 
 	private static int PLACEORDER = 0;
-	ObservableList<CurrentOrder> orderList = FXCollections.observableArrayList();
+	ObservableList<Order> orderList = FXCollections.observableArrayList();
 	 
 	
 	@Override
 	public boolean add(Object obj) {
 		
-        if(!(obj instanceof CurrentOrder))
+        if(!(obj instanceof Order))
         {
             return false;
         }
-        CurrentOrder order = (CurrentOrder) obj;
+        Order order = (Order) obj;
         
 		return orderList.add(order);
 	}
 
 	@Override
 	public boolean remove(Object obj) {
-        if(!(obj instanceof CurrentOrder))
+        if(!(obj instanceof Order))
         {
             return false;
         }
-        CurrentOrder order = (CurrentOrder) obj;
+        Order order = (Order) obj;
         
         return orderList.remove(order);
 	}
@@ -40,14 +40,14 @@ public class StoreOrder implements Customizable{
 		}
 		
 		if(index >= 0 && index < orderList.size()) {
-			CurrentOrder order = orderList.get(index);
+			Order order = orderList.get(index);
 			remove = remove(order);
 		}
 		
         return remove;
 	}
 
-	public ObservableList<CurrentOrder> getObserveOrderList(){
+	public ObservableList<Order> getObserveOrderList(){
 		return orderList;
 	}
 	
@@ -65,7 +65,7 @@ public class StoreOrder implements Customizable{
     	
     	for (int index = 0;index < orderList.size();index++ ) {
     	
-    		CurrentOrder order = orderList.get(index);
+    		Order order = orderList.get(index);
     	    ObservableList<MenuItem> orderItems = order.getObserveOrderList();
 		
 		    if (orderItems.isEmpty()) {

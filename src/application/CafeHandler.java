@@ -15,10 +15,10 @@ public class CafeHandler {
     private static final int MAXDONUTCOUNT = 100;
 	
     private Dounte donuteHandler = new Dounte();
-    private final CurrentOrder currentOrder = new CurrentOrder();
+    private final Order currentOrder = new Order();
     private Coffee coffeeHandler  = new Coffee();
     private CoffeeType brewedCoffee = null;
-    private final StoreOrder storeOrder = new StoreOrder();
+    private final StoreOrders storeOrder = new StoreOrders();
     
     public String getTwoUpToTwoDecimalPoint(double val)
     {
@@ -255,13 +255,13 @@ public class CafeHandler {
 	public boolean placeOrderInStore() {
 		boolean ret = false;
 		if(getCurrentOrderList().size() != 0) {
-			ret = storeOrder.add(new CurrentOrder(currentOrder,storeOrder.generateOrderNumber()));
+			ret = storeOrder.add(new Order(currentOrder,storeOrder.generateOrderNumber()));
 			currentOrder.getObserveOrderList().clear();
 		}
 		return ret;
 	}
 	
-	public ObservableList<CurrentOrder> getStoreOrderList(){
+	public ObservableList<Order> getStoreOrderList(){
 		return storeOrder.getObserveOrderList();
 	}
 	

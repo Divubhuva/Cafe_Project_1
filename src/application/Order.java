@@ -1,22 +1,22 @@
 package application;
 
-import java.util.ArrayList;
+
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class CurrentOrder implements Customizable {
+public class Order implements Customizable {
 
 	private final double SALESTAX = 6.625;
 	private final double RESPECTTO = 100.00;
 	private ObservableList<MenuItem> orderItems = FXCollections.observableArrayList(); 
 	private int orderNumber = -1;
 	
-	public CurrentOrder() {
+	public Order() {
 		
 	}
 	
-	public CurrentOrder(CurrentOrder src, int orderNumber) {
+	public Order(Order src, int orderNumber) {
 		this.orderItems.addAll(src.orderItems);
 		this.orderNumber = orderNumber;
 	}
