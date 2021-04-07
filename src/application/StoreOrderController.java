@@ -66,7 +66,7 @@ public class StoreOrderController implements Initializable{
 	 */
 	private void PrintOrderInfo(int index) {
     	CafeHandler handler = mainController.getCafeHandler();
-    	ObservableList<CurrentOrder> orderList = handler.getStoreOrderList();
+    	ObservableList<orders> orderList = handler.getStoreOrderList();
     	
     	if (orderList.isEmpty()) {
     		logger.appendText("There is not store order place. Store order is empty.\n");
@@ -77,7 +77,7 @@ public class StoreOrderController implements Initializable{
     		logger.appendText("Order Number is out of range.\n");
     		return;
     	}
-    	CurrentOrder order = orderList.get(index);
+    	orders order = orderList.get(index);
     	ObservableList<MenuItem> orderItems = order.getObserveOrderList();
 		
 		if (orderItems.isEmpty()) {
@@ -203,7 +203,7 @@ public class StoreOrderController implements Initializable{
 		CafeHandler handler = mainController.getCafeHandler();
 		
 		numberOfOrderList.clear();
-		ObservableList<CurrentOrder> storeOrderList = handler.getStoreOrderList();
+		ObservableList<orders> storeOrderList = handler.getStoreOrderList();
 		for(int index = 0; index < storeOrderList.size(); index++) {
 			numberOfOrderList.add(String.valueOf(storeOrderList.get(index).getUniqueOrderNumber()));
 		}

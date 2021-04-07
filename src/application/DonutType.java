@@ -3,7 +3,7 @@ package application;
 import java.util.ArrayList;
 
 /**
- * This class defines a type of donut available for sale.
+ * This class defines a type of donut.
  *
  * @author Divya Bhuva, Dorothy Wu
  */

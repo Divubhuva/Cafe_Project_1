@@ -10,13 +10,13 @@ import javafx.collections.ObservableList;
  * The StoreOrder class implements Customizable, and has the information for a store's orders.
  * @author Divya Bhuva, Dorothy Wu
  */
-public class StoreOrder implements Customizable{
+public class storeOrders implements Customizable{
 
 	/**
 	 * placeOrder represents the orders placed.
 	 */
 	private static int placeOrder = 0;
-	ObservableList<CurrentOrder> orderList = FXCollections.observableArrayList();
+	ObservableList<orders> orderList = FXCollections.observableArrayList();
 
 	/**
 	 * This adds an order to the list.
@@ -27,11 +27,11 @@ public class StoreOrder implements Customizable{
 	@Override
 	public boolean add(Object obj) {
 		
-        if(!(obj instanceof CurrentOrder))
+        if(!(obj instanceof orders))
         {
             return false;
         }
-        CurrentOrder order = (CurrentOrder) obj;
+        orders order = (orders) obj;
         
 		return orderList.add(order);
 	}
@@ -44,11 +44,11 @@ public class StoreOrder implements Customizable{
 	 */
 	@Override
 	public boolean remove(Object obj) {
-        if(!(obj instanceof CurrentOrder))
+        if(!(obj instanceof orders))
         {
             return false;
         }
-        CurrentOrder order = (CurrentOrder) obj;
+        orders order = (orders) obj;
         
         return orderList.remove(order);
 	}
@@ -66,7 +66,7 @@ public class StoreOrder implements Customizable{
 		}
 		
 		if(index >= 0 && index < orderList.size()) {
-			CurrentOrder order = orderList.get(index);
+			orders order = orderList.get(index);
 			remove = remove(order);
 		}
 		
@@ -77,7 +77,7 @@ public class StoreOrder implements Customizable{
 	 * Returns the list of CurrentOrders.
 	 * @return the list of CurrentOrders.
 	 */
-	public ObservableList<CurrentOrder> getObserveOrderList(){
+	public ObservableList<orders> getObserveOrderList(){
 		return orderList;
 	}
 
@@ -104,7 +104,7 @@ public class StoreOrder implements Customizable{
     	
     	for (int index = 0;index < orderList.size();index++ ) {
     	
-    		CurrentOrder order = orderList.get(index);
+    		orders order = orderList.get(index);
     	    ObservableList<MenuItem> orderItems = order.getObserveOrderList();
 		
 		    if (orderItems.isEmpty()) {
