@@ -10,8 +10,8 @@ import javafx.collections.ObservableList;
 
 public class CafeHandler {
 	
-	private HashMap<String, DounteType> availableDounts = new HashMap<String, DounteType>();
-	private HashMap<String, CoffeeType> availableSizeOfCoffee = new HashMap<String, CoffeeType>();
+	private final HashMap<String, DounteType> availableDounts = new HashMap<String, DounteType>();
+	private final HashMap<String, CoffeeType> availableSizeOfCoffee = new HashMap<String, CoffeeType>();
     private static final int MAXDONUTCOUNT = 100;
 	
     private Dounte donuteHandler = new Dounte();

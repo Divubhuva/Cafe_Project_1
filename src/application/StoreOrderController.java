@@ -39,8 +39,8 @@ public class StoreOrderController implements Initializable{
     @FXML
     private ListView<String> PrintArea;
 
-    private ObservableList<String> numberOfOrderList = FXCollections.observableArrayList();
-    private ObservableList<String> orderItemList = FXCollections.observableArrayList(); 
+    private final ObservableList<String> numberOfOrderList = FXCollections.observableArrayList();
+    private final ObservableList<String> orderItemList = FXCollections.observableArrayList(); 
     
     
     

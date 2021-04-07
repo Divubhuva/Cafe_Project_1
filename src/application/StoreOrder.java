@@ -1,8 +1,6 @@
 package application;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
