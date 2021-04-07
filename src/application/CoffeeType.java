@@ -11,7 +11,7 @@ public class CoffeeType {
 	private int count = 1;
 	protected String sizeofCoffee = "";
 	
-	private ArrayList<String> addedInList = new ArrayList<String>();
+	private final ArrayList<String> addedInList = new ArrayList<String>();
 	private final ArrayList<String> AddIns = new ArrayList<String>(Arrays.asList("Cream", "Syrup", "Milk", "Caramel", "Whipped Cream"));
 	
 	
