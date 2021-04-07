@@ -40,7 +40,7 @@ public class CurrentOrderController implements Initializable{
 	 
 	 private static final int START_COUNT = 1;
 
-	 private ObservableList<String> currentOrderListInfo = FXCollections.observableArrayList();
+	 private final ObservableList<String> currentOrderListInfo = FXCollections.observableArrayList();
 
 	/**
 	 * This is the method that is executed whenever PlaceOrderButton is pressed.
