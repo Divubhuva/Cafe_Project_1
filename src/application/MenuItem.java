@@ -34,7 +34,7 @@ public abstract class MenuItem implements Customizable{
 	/**
 	 * This provides an abstract method for defining the removal of an item.
 	 *
-	 * @param index
+	 * @param index Index of items
 	 * @return the item removed from a specific index.
 	 */
 	public abstract boolean remove(int index);

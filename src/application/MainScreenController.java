@@ -43,7 +43,7 @@ public class MainScreenController {
 	/**
 	 * This defines the CafeHandler.
 	 */
-	private CafeHandler handler = new CafeHandler();
+	private final CafeHandler handler = new CafeHandler();
 
 	/**
 	 * This is the method that is executed whenever a CoffeeButton is pressed.

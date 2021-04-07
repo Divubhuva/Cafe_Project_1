@@ -50,11 +50,11 @@ public class DonutController implements Initializable{
     @FXML
     private TextArea Logger;
 
-	private ObservableList<String> DountTypeList = FXCollections.observableArrayList();
+	private final ObservableList<String> DountTypeList = FXCollections.observableArrayList();
 
-    private ObservableList<String> FlavorListData = FXCollections.observableArrayList();
+    private final ObservableList<String> FlavorListData = FXCollections.observableArrayList();
 
-	private ObservableList<String> PlaceDountOrderListData = FXCollections.observableArrayList();
+	private final ObservableList<String> PlaceDountOrderListData = FXCollections.observableArrayList();
 
 	private static final int START_COUNT = 1;
 
