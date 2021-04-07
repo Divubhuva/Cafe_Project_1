@@ -7,9 +7,9 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 
 /**
- * This launches Payroll Controller Application.
+ * This launches Rutgers Cafe Application.
  *
- * Date: 03/12/2021
+ * Date: 04/06/2021
  * @author Divya Bhuva, Dorothy Wu
  */
 public class Main extends Application {
@@ -26,7 +26,7 @@ public class Main extends Application {
 			final int height = 400;
 			Scene scene = new Scene(root,width,height);
 			primaryStage.setScene(scene);
-			primaryStage.setTitle("Rutgers Cafe Kisok system");
+			primaryStage.setTitle("Rutgers Cafe Kiosk system");
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();

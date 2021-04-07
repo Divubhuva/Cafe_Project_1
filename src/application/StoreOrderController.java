@@ -22,6 +22,11 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser.ExtensionFilter;
 
+/**
+ * This is the controller that binds to the StoreView.
+ *
+ * @author Divya Bhuva, Dorothy Wu
+ */
 public class StoreOrderController implements Initializable{
 
 	private MainScreenController mainController;
@@ -40,19 +45,26 @@ public class StoreOrderController implements Initializable{
     private ListView<String> PrintArea;
 
     private ObservableList<String> numberOfOrderList = FXCollections.observableArrayList();
-    private ObservableList<String> orderItemList = FXCollections.observableArrayList(); 
-    
-    
-    
-    @FXML
-    void OrderNumberComboBoxChange(ActionEvent event) {
+    private ObservableList<String> orderItemList = FXCollections.observableArrayList();
+
+
+	/**
+	 * This is the method that is executed whenever the OrderNumberComboBox is changed.
+	 * @param event, the captured event.
+	 */
+	@FXML
+	void OrderNumberComboBoxChange(ActionEvent event) {
     	if(!numberOfOrderList.isEmpty()) {
     		int index = OrderNumberComboBox.getSelectionModel().getSelectedIndex();
     		PrintOrderInfo(index);
     	}
     }
-	
-    private void PrintOrderInfo(int index) {
+
+	/**
+	 * This takes the current CafeHandler and gets the store order list from the MianController.
+	 * @param index
+	 */
+	private void PrintOrderInfo(int index) {
     	CafeHandler handler = mainController.getCafeHandler();
     	ObservableList<CurrentOrder> orderList = handler.getStoreOrderList();
     	
@@ -87,14 +99,22 @@ public class StoreOrderController implements Initializable{
 		
 		TotalAmountOfOrder.setText(handler.getTwoUpToTwoDecimalPoint(order.getTotalPrice()));
     }
-	
+
+	/**
+	 * This initializes the StoreView.
+	 * @param arg0 is the URL.
+	 * @param arg1 is the resource bundle given by the fxml loader.
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		OrderNumberComboBox.setItems(numberOfOrderList);
 		PrintArea.setItems(orderItemList);
 	}
-	
 
+	/**
+	 * This is the method that is executed whenever the CancelOrderButton is pressed.
+	 * @param event, the captured event.
+	 */
     @FXML
     void CancelOrderButtonPress(ActionEvent event) {
     	if(!numberOfOrderList.isEmpty()) {
@@ -106,7 +126,11 @@ public class StoreOrderController implements Initializable{
     	}
     }
 
-    @FXML
+	/**
+	 * This is the method that is executed whenever the ExportOrdersButton is pressed.
+	 * @param event, the captured event.
+	 */
+	@FXML
     void ExportOrdersButtonPress(ActionEvent event) {
     	FileChooser chooser = new FileChooser();
     	chooser.setTitle("Save Target File for Export");
@@ -134,8 +158,12 @@ public class StoreOrderController implements Initializable{
     	}
     	writeDateBaseToFile(targetFile.getPath());
     }
-    
-    private void writeDateBaseToFile(String filePath) {
+
+	/**
+	 * This copies the information from the database to a file.
+	 * @param filePath is the user selected local path as to where to write the file to.
+	 */
+	private void writeDateBaseToFile(String filePath) {
         PrintWriter fw = null;
         BufferedWriter bw  = null;
         try {
@@ -166,15 +194,18 @@ public class StoreOrderController implements Initializable{
     	    }
     	}
     }
-    
 
+
+	/**
+	 * This sets the controller's StoreOrderList to be equal to the MainController CafeHandler's list.
+	 */
 	private void initValues() {
 		CafeHandler handler = mainController.getCafeHandler();
 		
 		numberOfOrderList.clear();
-		ObservableList<CurrentOrder> storeorderList = handler.getStoreOrderList();
-		for(int index = 0; index < storeorderList.size();index++) {
-			numberOfOrderList.add(String.valueOf(storeorderList.get(index).getUniqueOrderNumber()));
+		ObservableList<CurrentOrder> storeOrderList = handler.getStoreOrderList();
+		for(int index = 0; index < storeOrderList.size(); index++) {
+			numberOfOrderList.add(String.valueOf(storeOrderList.get(index).getUniqueOrderNumber()));
 		}
 		
 		if (!numberOfOrderList.isEmpty()) {
@@ -186,7 +217,11 @@ public class StoreOrderController implements Initializable{
 			TotalAmountOfOrder.setText(handler.getTwoUpToTwoDecimalPoint(0));
 		}
 	}
-	
+
+	/**
+	 * This sets the main controller.
+	 * @param controller to set the current controller equal to.
+	 */
 	public void setMainController(MainScreenController controller) {
 		mainController = controller;
 		

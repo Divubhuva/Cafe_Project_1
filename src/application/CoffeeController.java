@@ -14,6 +14,11 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
+/**
+ * This is the controller that binds to the CoffeeView.
+ *
+ * @author Divya Bhuva, Dorothy Wu
+ */
 public class CoffeeController implements Initializable {
 
 	private MainScreenController mainController;
@@ -45,24 +50,32 @@ public class CoffeeController implements Initializable {
     @FXML
     private TextArea Logger;
 
-    private static final int STARTCOUNT = 1;
-    private ObservableList<String> coffeeSizeTypeList = FXCollections.observableArrayList(); 
-    
-    @Override
+    private static final int START_COUNT = 1;
+    private ObservableList<String> coffeeSizeTypeList = FXCollections.observableArrayList();
+
+	/**
+	 * This initializes the CoffeeView
+	 * @param arg0 is the URL.
+	 * @param arg1 is the resource bundle given by the fxml loader.
+	 */
+	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
     	SizeOfCoffee.setItems(coffeeSizeTypeList);
-    	NumberOfCoffeCombo.setValue(String.valueOf(STARTCOUNT));
+    	NumberOfCoffeCombo.setValue(String.valueOf(START_COUNT));
 	}
-	 
-	
-    
-    @FXML
+
+
+	/**
+	 * This is the method that is executed whenever the AddToOrderButton is pressed.
+	 * @param event, the captured event.
+	 */
+	@FXML
     void AddToOrderButtonPress(ActionEvent event) {
     	CafeHandler handler = mainController.getCafeHandler();
     	handler.addToCoffeeOrder();
     	
     	String typeOfsize  = SizeOfCoffee.getSelectionModel().getSelectedItem();
-    	int count = NumberOfCoffeCombo.getSelectionModel().getSelectedIndex() + STARTCOUNT;
+    	int count = NumberOfCoffeCombo.getSelectionModel().getSelectedIndex() + START_COUNT;
     	
     	WhippedCreamCheckbox.setSelected(false);
     	CreamCheckBox.setSelected(false);
@@ -75,7 +88,11 @@ public class CoffeeController implements Initializable {
     	Logger.appendText("Coffee is added to oreder.\n");
     }
 
-    @FXML
+	/**
+	 * This is the method that is executed whenever Caramel is selected or deselected.
+	 * @param event, the captured event.
+	 */
+	@FXML
     void CaramelCheckBoxChange(ActionEvent event) {
     	CafeHandler handler = mainController.getCafeHandler();
 		
@@ -88,7 +105,11 @@ public class CoffeeController implements Initializable {
     	DollaramountTextField.setText(String.valueOf(handler.getCoffeePrice()));
     }
 
-    @FXML
+	/**
+	 * This is the method that is executed whenever Cream is selected or deselected.
+	 * @param event, the captured event.
+	 */
+	@FXML
     void CreamCheckBoxChange(ActionEvent event) {
     	CafeHandler handler = mainController.getCafeHandler();
 		
@@ -101,7 +122,11 @@ public class CoffeeController implements Initializable {
     	DollaramountTextField.setText(String.valueOf(handler.getCoffeePrice()));
     }
 
-    @FXML
+	/**
+	 * This is the method that is executed whenever Milk is selected or deselected.
+	 * @param event, the captured event.
+	 */
+	@FXML
     void MilkCheckBoxChange(ActionEvent event) {
     	CafeHandler handler = mainController.getCafeHandler();
 		
@@ -114,19 +139,27 @@ public class CoffeeController implements Initializable {
     	DollaramountTextField.setText(String.valueOf(handler.getCoffeePrice()));
     }
 
-    @FXML
+	/**
+	 * This is the method that is executed whenever NumberOfCoffe is selected.
+	 * @param event, the captured event.
+	 */
+	@FXML
     void NumberOfCoffeChange(ActionEvent event) {
     	CafeHandler handler = mainController.getCafeHandler();
-    	int count = NumberOfCoffeCombo.getSelectionModel().getSelectedIndex() + STARTCOUNT;
+    	int count = NumberOfCoffeCombo.getSelectionModel().getSelectedIndex() + START_COUNT;
     	handler.setNumberOfCoffee(count);
     	DollaramountTextField.setText(String.valueOf(handler.getCoffeePrice()));
     }
 
-    @FXML
+	/**
+	 * This is the method that is executed whenever SizeOfCoffee is selected.
+	 * @param event, the captured event.
+	 */
+	@FXML
     void SizeOfCoffeeChange(ActionEvent event) {
     	CafeHandler handler = mainController.getCafeHandler();
     	String typeOfsize  = SizeOfCoffee.getSelectionModel().getSelectedItem();
-    	int count = NumberOfCoffeCombo.getSelectionModel().getSelectedIndex() + STARTCOUNT;
+    	int count = NumberOfCoffeCombo.getSelectionModel().getSelectedIndex() + START_COUNT;
     	ArrayList<String> selectedList = new ArrayList<String>();
     	
     	if (WhippedCreamCheckbox.isSelected()) selectedList.add(WhippedCreamCheckbox.getText());
@@ -140,7 +173,11 @@ public class CoffeeController implements Initializable {
 		DollaramountTextField.setText(String.valueOf(handler.getCoffeePrice()));
     }
 
-    @FXML
+	/**
+	 * This is the method that is executed whenever Syrup is selected or deselected.
+	 * @param event, the captured event.
+	 */
+	@FXML
     void SyrupCheckBoxChange(ActionEvent event) {
     	CafeHandler handler = mainController.getCafeHandler();
 		
@@ -153,7 +190,11 @@ public class CoffeeController implements Initializable {
     	DollaramountTextField.setText(String.valueOf(handler.getCoffeePrice()));
     }
 
-    @FXML
+	/**
+	 * This is the method that is executed whenever WhippedCream is selected or deselected.
+	 * @param event, the captured event.
+	 */
+	@FXML
     void WhippedCreamChange(ActionEvent event) {
     	CafeHandler handler = mainController.getCafeHandler();
 		
@@ -165,20 +206,24 @@ public class CoffeeController implements Initializable {
     	}
     	DollaramountTextField.setText(String.valueOf(handler.getCoffeePrice()));
     }
-	
-    public void setMainController(MainScreenController controller) {
+
+	/**
+	 * This sets the main controller.
+	 * @param controller to set the current controller equal to.
+	 */
+	public void setMainController(MainScreenController controller) {
 		mainController = controller;
 		
 		CafeHandler handler = mainController.getCafeHandler();
 		coffeeSizeTypeList.addAll(handler.getTypesOfCoffeeSize());
 		SizeOfCoffee.setValue(new CoffeeShort().getSizeOfCoffee());
 		
-		for(int index = STARTCOUNT ; index <= handler.getMaxCount(); index++) {
+		for(int index = START_COUNT; index <= handler.getMaxCount(); index++) {
 			NumberOfCoffeCombo.getItems().add(String.valueOf(index));
     	}
 
 		String typeOfsize  = SizeOfCoffee.getSelectionModel().getSelectedItem();
-    	int count = NumberOfCoffeCombo.getSelectionModel().getSelectedIndex() + STARTCOUNT;
+    	int count = NumberOfCoffeCombo.getSelectionModel().getSelectedIndex() + START_COUNT;
 		handler.selectSizeOfCoffee(typeOfsize, new ArrayList<String>(), count);
 		
 		DollaramountTextField.setText(String.valueOf(handler.getCoffeePrice()));

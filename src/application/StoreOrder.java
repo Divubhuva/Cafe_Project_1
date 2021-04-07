@@ -1,17 +1,29 @@
 package application;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+/**
+ *
+ * The StoreOrder class implements Customizable, and has the information for a store's orders.
+ * @author Divya Bhuva, Dorothy Wu
+ */
 public class StoreOrder implements Customizable{
 
-	private static int PLACEORDER = 0;
+	/**
+	 * placeOrder represents the orders placed.
+	 */
+	private static int placeOrder = 0;
 	ObservableList<CurrentOrder> orderList = FXCollections.observableArrayList();
-	 
-	
+
+	/**
+	 * This adds an order to the list.
+	 *
+	 * @param obj of type Object.
+	 * @return TRUE if the order is added to the list; otherwise FALSE.
+	 */
 	@Override
 	public boolean add(Object obj) {
 		
@@ -24,6 +36,12 @@ public class StoreOrder implements Customizable{
 		return orderList.add(order);
 	}
 
+	/**
+	 * This removes an order from the list.
+	 *
+	 * @param obj of type Object.
+	 * @return TRUE if the order removed from the list; otherwise FALSE.
+	 */
 	@Override
 	public boolean remove(Object obj) {
         if(!(obj instanceof CurrentOrder))
@@ -34,7 +52,13 @@ public class StoreOrder implements Customizable{
         
         return orderList.remove(order);
 	}
-	
+
+	/**
+	 * This removes an order from the list.
+	 *
+	 * @param index
+	 * @return the order removed from the list.
+	 */
 	public boolean remove(int index) {
 		boolean remove = false;
 		if (orderList.isEmpty()) {
@@ -49,15 +73,28 @@ public class StoreOrder implements Customizable{
         return remove;
 	}
 
+	/**
+	 * Returns the list of CurrentOrders.
+	 * @return the list of CurrentOrders.
+	 */
 	public ObservableList<CurrentOrder> getObserveOrderList(){
 		return orderList;
 	}
-	
+
+	/**
+	 * This generates the order number.
+	 * @return the order number as an int.
+	 */
 	public int generateOrderNumber() {
-		PLACEORDER++;
-		return PLACEORDER;
+		placeOrder++;
+		return placeOrder;
 	}
-	
+
+	/**
+	 * This is the database to be exported.
+	 *
+	 * @return the information in the database as a String.
+	 */
 	public String exportDatabase() {
     	String exportString = "";
     	

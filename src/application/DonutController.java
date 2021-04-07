@@ -8,71 +8,86 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
+/**
+ * This is the controller that binds to the DonutView.
+ *
+ * @author Divya Bhuva, Dorothy Wu
+ */
 public class DonutController implements Initializable{
 
+
 	private MainScreenController mainController;
-	
+
 	@FXML
     private ComboBox<String> DonuteTypeComboBox;
 
     @FXML
     private Button AddToListButton;
 
-    @FXML
+	@FXML
     private Button RemoveFromListButton;
 
     @FXML
     private ComboBox<String> NumberOfCountComboBox;
 
-    @FXML
+	@FXML
     private ListView<String> FlowersList;
 
     @FXML
     private ListView<String> DounteOrderListBox;
 
-    @FXML
+	@FXML
     private TextField DounteAmountTextField;
+
 
     @FXML
     private TextArea Logger;
-    
-    private ObservableList<String> DountTypeList = FXCollections.observableArrayList(); 	
+
+	private ObservableList<String> DountTypeList = FXCollections.observableArrayList();
+
     private ObservableList<String> FlavorListData = FXCollections.observableArrayList();
-    private ObservableList<String> PlaceDountOrderListData = FXCollections.observableArrayList();
-    
-    private static final int STARTCOUNT = 1;
-    
+
+	private ObservableList<String> PlaceDountOrderListData = FXCollections.observableArrayList();
+
+	private static final int START_COUNT = 1;
+
+	/**
+	 * This initializes the DonutView
+	 * @param arg0 is the URL.
+	 * @param arg1 is the resource bundle given by the fxml loader.
+	 */
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
     	DonuteTypeComboBox.setItems(DountTypeList);
     	FlowersList.setItems(FlavorListData);
     	FlowersList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
     	
-    	DonuteTypeComboBox.setValue(new YeastDonut().getDountName());
+    	DonuteTypeComboBox.setValue(new YeastDonut().getDonutName());
     	
-    	NumberOfCountComboBox.setValue(String.valueOf(STARTCOUNT));
+    	NumberOfCountComboBox.setValue(String.valueOf(START_COUNT));
     	
     	DounteOrderListBox.setItems(PlaceDountOrderListData);
     	DounteOrderListBox.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
     	
     	
 	}
-    
-    
-    @FXML
+
+	/**
+	 * This is the method that is executed whenever the AddToListButton is pressed.
+	 * @param event, the captured event.
+	 */
+	@FXML
     void AddToListButtonPress(ActionEvent event) {
     	String typeOfDounte  = DonuteTypeComboBox.getSelectionModel().getSelectedItem();
     	String flower = FlowersList.getSelectionModel().getSelectedItem();
-    	int count = NumberOfCountComboBox.getSelectionModel().getSelectedIndex() + STARTCOUNT;
+    	int count = NumberOfCountComboBox.getSelectionModel().getSelectedIndex() + START_COUNT;
     	
     	CafeHandler handler = mainController.getCafeHandler();
     	handler.addDounteToList(typeOfDounte, flower, count);
@@ -81,12 +96,16 @@ public class DonutController implements Initializable{
     	PlaceDountOrderListData.add(info);
     	DounteAmountTextField.setText(handler.getTotalPriceForDonut());
     	
-    	if(PlaceDountOrderListData.size() == STARTCOUNT) {
+    	if(PlaceDountOrderListData.size() == START_COUNT) {
     		DounteOrderListBox.getSelectionModel().selectFirst();
     	}
     }
 
-    @FXML
+	/**
+	 * This is the method that is executed whenever the DonuteType is selected.
+	 * @param event, the captured event.
+	 */
+	@FXML
     void DonuteTypeValueChange(ActionEvent event) {
     	CafeHandler handler = mainController.getCafeHandler();
     	String selectedType = DonuteTypeComboBox.getSelectionModel().getSelectedItem();
@@ -97,7 +116,11 @@ public class DonutController implements Initializable{
     	
     }
 
-    @FXML
+	/**
+	 * This is the method that is executed whenever RemoveFromListButton is pressed.
+	 * @param event, the captured event.
+	 */
+	@FXML
     void RemoveFromListButtonPress(ActionEvent event) {
     	if (!DounteOrderListBox.getSelectionModel().isEmpty()) {
     		String selectedText = DounteOrderListBox.getSelectionModel().getSelectedItem();
@@ -113,8 +136,12 @@ public class DonutController implements Initializable{
     		Logger.appendText("Dounts List is empty.\n");
     	}
     }
-	
-    @FXML
+
+	/**
+	 * This is the method that is executed whenever AddToOrderButton is pressed.
+	 * @param event, the captured event.
+	 */
+	@FXML
     void AddToOrderButtonPress(ActionEvent event) {
     	
     	CafeHandler handler = mainController.getCafeHandler();
@@ -131,17 +158,20 @@ public class DonutController implements Initializable{
     	}
   }
 
-	
+	/**
+	 * This sets the main controller.
+	 * @param controller to set the current controller equal to.
+	 */
 	public void setMainController(MainScreenController controller) {
 		mainController = controller;
 		
 		CafeHandler handler = mainController.getCafeHandler();
     	DountTypeList.addAll(handler.getTypesOfDounts());
 
-    	FlavorListData.addAll(handler.getDountsFlavor(new YeastDonut().getDountName()));
+    	FlavorListData.addAll(handler.getDountsFlavor(new YeastDonut().getDonutName()));
     	FlowersList.getSelectionModel().selectFirst();
     	
-    	for(int index = STARTCOUNT ; index <= handler.getMaxCount(); index++) {
+    	for(int index = START_COUNT; index <= handler.getMaxCount(); index++) {
     		NumberOfCountComboBox.getItems().add(String.valueOf(index));
     	}
     	

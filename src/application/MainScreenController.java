@@ -8,19 +8,47 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-
+/**
+ * This is the controller that binds to the MainScreenView.
+ *
+ * @author Divya Bhuva, Dorothy Wu
+ */
 public class MainScreenController {
 
+	/**
+	 * This sets a fixed width for the window.
+	 */
 	private static final int WIDTH = 600;
+
+	/**
+	 * This sets a fixed height for the window.
+	 */
 	private static final int HEIGHT = 650;
-	
+
+	/**
+	 * This defines the DonutStage.
+	 */
 	private Stage donuteStage;
-	
+
+	/**
+	 * This defines the StoreOrderStage.
+	 */
 	private Stage storeOrderStage;
+
+	/**
+	 * This defines the CoffeeStage.
+	 */
 	private Stage coffeeStage;
 
+	/**
+	 * This defines the CafeHandler.
+	 */
 	private CafeHandler handler = new CafeHandler();
-	
+
+	/**
+	 * This is the method that is executed whenever a CoffeeButton is pressed.
+	 * @param event, the captured event.
+	 */
     @FXML
     void CoffeeButtonPress(ActionEvent event) {
     	try {
@@ -42,6 +70,10 @@ public class MainScreenController {
     	
     }
 
+	/**
+	 * This is the method that is executed whenever a CurrentOrderButton is pressed.
+	 * @param event, the captured event.
+	 */
     @FXML
     void CurrentOrderButtonPress(ActionEvent event) {
     	try {
@@ -61,6 +93,10 @@ public class MainScreenController {
     	}
     }
 
+	/**
+	 * This is the method that is executed whenever a DonutesButtonButton is pressed.
+	 * @param event, the captured event.
+	 */
     @FXML
     void DonutesButtonPress(ActionEvent event) {
     	try {
@@ -83,6 +119,10 @@ public class MainScreenController {
     	}
     }
 
+	/**
+	 * This is the method that is executed whenever a StoreOrderButtonButton is pressed.
+	 * @param event, the captured event.
+	 */
     @FXML
     void StoreOrderButtonPress(ActionEvent event) {
     	try {
@@ -103,7 +143,10 @@ public class MainScreenController {
     	}
     }
 
-	
+	/**
+	 * This gets the CafeHandler of the controller.
+	 * @return the controller's CafeHandler.
+	 */
     public CafeHandler getCafeHandler() {
     	return handler;
     }

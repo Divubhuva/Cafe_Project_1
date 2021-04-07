@@ -3,21 +3,49 @@ package application;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class CakeDonut extends DounteType{
-	private final ArrayList<String> FLOWERS = new ArrayList<String>(Arrays.asList("Pineapple","Lemony Glazed","Carrot Cake"));
+/**
+ * This class extends the DonutType class and includes specific data and operations in regards to cake donuts.
+ *
+ * @author Divya Bhuva, Dorothy Wu
+ */
+public class CakeDonut extends DonutType
+{
+
+	/**
+	 * This is the list of types of flavors for CakeDonut type.
+	 */
+	private final ArrayList<String> FLAVORS = new ArrayList<String>(Arrays.asList("Pineapple","Lemony Glazed","Carrot Cake"));
+
+	/**
+	 * PRICE is the price of a cake donut
+	 */
 	private final double PRICE = 1.59;
-	
+
+	/**
+	 * This is the no argument CakeDonut constructor
+	 * It has the price for a cake donut
+	 */
 	CakeDonut(){
-		pricePerDounter = PRICE;
+		pricePerDonut = PRICE;
 	}
-	
+
+	/**
+	 * This returns the flavors for cake donuts.
+	 *
+	 * @return the flavors for cake donuts.
+	 */
 	@Override
-	public ArrayList<String> getAllFlowers(){
-		return FLOWERS;
+	public ArrayList<String> getAllFlavors(){
+		return FLAVORS;
 	}
-	
+
+	/**
+	 * This gets the donut type name.
+	 *
+	 * @return "CakeDonut" on the dropdown.
+	 */
 	@Override
-	public String getDountName() {
+	public String getDonutName() {
 		return "CakeDonut";
 	}
 }
