@@ -16,7 +16,7 @@ public class storeOrders implements Customizable{
 	 * placeOrder represents the orders placed.
 	 */
 	private static int placeOrder = 0;
-	ObservableList<orders> orderList = FXCollections.observableArrayList();
+	ObservableList<Orders> orderList = FXCollections.observableArrayList();
 
 	/**
 	 * This adds an order to the list.
@@ -27,11 +27,11 @@ public class storeOrders implements Customizable{
 	@Override
 	public boolean add(Object obj) {
 		
-        if(!(obj instanceof orders))
+        if(!(obj instanceof Orders))
         {
             return false;
         }
-        orders order = (orders) obj;
+        Orders order = (Orders) obj;
         
 		return orderList.add(order);
 	}
@@ -44,11 +44,11 @@ public class storeOrders implements Customizable{
 	 */
 	@Override
 	public boolean remove(Object obj) {
-        if(!(obj instanceof orders))
+        if(!(obj instanceof Orders))
         {
             return false;
         }
-        orders order = (orders) obj;
+        Orders order = (Orders) obj;
         
         return orderList.remove(order);
 	}
@@ -66,7 +66,7 @@ public class storeOrders implements Customizable{
 		}
 		
 		if(index >= 0 && index < orderList.size()) {
-			orders order = orderList.get(index);
+			Orders order = orderList.get(index);
 			remove = remove(order);
 		}
 		
@@ -77,7 +77,7 @@ public class storeOrders implements Customizable{
 	 * Returns the list of CurrentOrders.
 	 * @return the list of CurrentOrders.
 	 */
-	public ObservableList<orders> getObserveOrderList(){
+	public ObservableList<Orders> getObserveOrderList(){
 		return orderList;
 	}
 
@@ -104,7 +104,7 @@ public class storeOrders implements Customizable{
     	
     	for (int index = 0;index < orderList.size();index++ ) {
     	
-    		orders order = orderList.get(index);
+    		Orders order = orderList.get(index);
     	    ObservableList<MenuItem> orderItems = order.getObserveOrderList();
 		
 		    if (orderItems.isEmpty()) {

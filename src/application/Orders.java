@@ -8,7 +8,7 @@ import javafx.collections.ObservableList;
  *
  * @author Divya Bhuva, Dorothy Wu
  */
-public class orders implements Customizable {
+public class Orders implements Customizable {
 
 	/**
 	 * SALES_TAX represents the sales tax.
@@ -34,7 +34,7 @@ public class orders implements Customizable {
 	 * This is the no-argument CurrentOrder Constructor.
 	 * It does not set default values.
 	 */
-	public orders() {
+	public Orders() {
 		
 	}
 
@@ -43,7 +43,7 @@ public class orders implements Customizable {
 	 * @param src is the CurrentOrder to set this CurrentOrder's value to.
 	 * @param orderNumber the selected order number.
 	 */
-	public orders(orders src, int orderNumber) {
+	public Orders(Orders src, int orderNumber) {
 		this.orderItems.addAll(src.orderItems);
 		this.orderNumber = orderNumber;
 	}

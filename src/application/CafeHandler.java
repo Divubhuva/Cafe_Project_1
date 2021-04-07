@@ -27,7 +27,7 @@ public class CafeHandler {
 	private Donut donutHandler = new Donut();
 
 
-    private final orders CURRENT_ORDER = new orders();
+    private final Orders CURRENT_ORDER = new Orders();
 
 
     private Coffee coffeeHandler  = new Coffee();
@@ -380,7 +380,7 @@ public class CafeHandler {
 	public boolean placeOrderInStore() {
 		boolean ret = false;
 		if(getCurrentOrderList().size() != 0) {
-			ret = STORE_ORDER.add(new orders(CURRENT_ORDER, STORE_ORDER.generateOrderNumber()));
+			ret = STORE_ORDER.add(new Orders(CURRENT_ORDER, STORE_ORDER.generateOrderNumber()));
 			CURRENT_ORDER.getObserveOrderList().clear();
 		}
 		return ret;
@@ -390,7 +390,7 @@ public class CafeHandler {
 	 * Gets the store order list.
 	 * @return the store order list of CurrentOrder objects.
 	 */
-	public ObservableList<orders> getStoreOrderList(){
+	public ObservableList<Orders> getStoreOrderList(){
 		return STORE_ORDER.getObserveOrderList();
 	}
 
