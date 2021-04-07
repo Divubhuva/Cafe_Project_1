@@ -36,7 +36,7 @@ public class CafeHandler {
 	private CoffeeType brewedCoffee = null;
 
 
-    private final storeOrders STORE_ORDER = new storeOrders();
+    private final StoreOrders STORE_ORDER = new StoreOrders();
 
 	/**
 	 * Returns a string representing a double formatted to two decimal places.

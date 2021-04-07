@@ -10,7 +10,7 @@ import javafx.collections.ObservableList;
  * The StoreOrder class implements Customizable, and has the information for a store's orders.
  * @author Divya Bhuva, Dorothy Wu
  */
-public class storeOrders implements Customizable{
+public class StoreOrders implements Customizable{
 
 	/**
 	 * placeOrder represents the orders placed.
@@ -56,7 +56,7 @@ public class storeOrders implements Customizable{
 	/**
 	 * This removes an order from the list.
 	 *
-	 * @param index
+	 * @param index order index
 	 * @return the order removed from the list.
 	 */
 	public boolean remove(int index) {

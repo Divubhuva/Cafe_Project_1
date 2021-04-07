@@ -62,7 +62,7 @@ public class StoreOrderController implements Initializable{
 
 	/**
 	 * This takes the current CafeHandler and gets the store order list from the MianController.
-	 * @param index
+	 * @param index Index of order
 	 */
 	private void PrintOrderInfo(int index) {
     	CafeHandler handler = mainController.getCafeHandler();
